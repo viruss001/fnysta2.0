@@ -22,9 +22,7 @@ export default function Navigation() {
     { to: "/policies", label: "Policy", icon: Newspaper },
     { to: "/calculators", label: "Calculators", icon: Calculator },
     { to: "/astrology", label: "Astrology", icon: Stars },
-    { to: "/about", label: "About", icon: Info },
-    { to: "/contact", label: "Contact", icon: MessageCircle },
-    { to: "/privacy", label: "Privacy", icon: Shield },
+   
   ];
 
   return (
