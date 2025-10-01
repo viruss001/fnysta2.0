@@ -123,7 +123,7 @@ export default function AstrologyPage() {
               className={`p-4 rounded-xl transition-all duration-300 ${
                 selectedSign === sign.name.toLowerCase()
                   ? 'bg-white text-purple-800 shadow-lg scale-105'
-                  : 'bg-white bg-opacity-10 text-white hover:bg-opacity-20'
+                  : 'bg-white bg-opacity-10 text-black hover:bg-opacity-20'
               }`}
             >
               <div className="text-3xl mb-2">{sign.symbol}</div>
@@ -138,8 +138,8 @@ export default function AstrologyPage() {
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-8">
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">{selectedZodiac?.symbol}</div>
-              <h2 className="text-3xl font-bold text-white mb-2">{selectedZodiac?.name}</h2>
-              <div className="flex items-center justify-center space-x-4 text-blue-200">
+              <h2 className="text-3xl font-bold text-black mb-2">{selectedZodiac?.name}</h2>
+              <div className="flex items-center justify-center space-x-4 text-black-200">
                 <span className="flex items-center">
                   <Calendar className="w-4 h-4 mr-1" />
                   {selectedZodiac?.dates}
@@ -150,37 +150,37 @@ export default function AstrologyPage() {
                 </span>
               </div>
             </div>
-            <p className="text-white text-center leading-relaxed">
+            <p className="text-black text-center leading-relaxed">
               {selectedZodiac?.description}
             </p>
           </div>
 
           {/* Today's Horoscope */}
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">Today's Horoscope</h3>
+            <h3 className="text-2xl font-bold text-black mb-6 text-center">Today's Horoscope</h3>
             <div className="space-y-6">
               <div className="bg-white bg-opacity-10 rounded-lg p-4">
                 <div className="flex items-center mb-2">
                   <Sun className="w-5 h-5 text-yellow-400 mr-2" />
-                  <h4 className="font-semibold text-white">General</h4>
+                  <h4 className="font-semibold text-black">General</h4>
                 </div>
-                <p className="text-blue-100 text-sm">{todaysHoroscope.general}</p>
+                <p className="text-black-100 text-sm">{todaysHoroscope.general}</p>
               </div>
               
               <div className="bg-white bg-opacity-10 rounded-lg p-4">
                 <div className="flex items-center mb-2">
                   <Moon className="w-5 h-5 text-pink-400 mr-2" />
-                  <h4 className="font-semibold text-white">Love</h4>
+                  <h4 className="font-semibold text-black">Love</h4>
                 </div>
-                <p className="text-blue-100 text-sm">{todaysHoroscope.love}</p>
+                <p className="text-black-100 text-sm">{todaysHoroscope.love}</p>
               </div>
               
               <div className="bg-white bg-opacity-10 rounded-lg p-4">
                 <div className="flex items-center mb-2">
                   <Stars className="w-5 h-5 text-green-400 mr-2" />
-                  <h4 className="font-semibold text-white">Career</h4>
+                  <h4 className="font-semibold text-black">Career</h4>
                 </div>
-                <p className="text-blue-100 text-sm">{todaysHoroscope.career}</p>
+                <p className="text-black-100 text-sm">{todaysHoroscope.career}</p>
               </div>
             </div>
           </div>
@@ -190,31 +190,31 @@ export default function AstrologyPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 text-center">
             <div className="bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <Sun className="w-8 h-8 text-white" />
+              <Sun className="w-8 h-8 text-black" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Daily Readings</h3>
+            <h3 className="text-xl font-bold text-black mb-2">Daily Readings</h3>
             <p className="text-blue-200 text-sm">Get personalized daily horoscope readings based on your zodiac sign and planetary alignments.</p>
           </div>
           
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 text-center">
             <div className="bg-gradient-to-r from-purple-400 to-pink-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <Moon className="w-8 h-8 text-white" />
+              <Moon className="w-8 h-8 text-black" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Moon Phases</h3>
+            <h3 className="text-xl font-bold text-black mb-2">Moon Phases</h3>
             <p className="text-blue-200 text-sm">Track lunar cycles and understand how moon phases influence your emotions and energy levels.</p>
           </div>
           
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 text-center">
             <div className="bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <Stars className="w-8 h-8 text-white" />
+              <Stars className="w-8 h-8 text-black" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Birth Chart</h3>
+            <h3 className="text-xl font-bold text-black mb-2">Birth Chart</h3>
             <p className="text-blue-200 text-sm">Discover your complete astrological profile with detailed birth chart analysis and interpretations.</p>
           </div>
         </div>
 
         {/* Call to Action */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-black text-center">
           <h2 className="text-3xl font-bold mb-4">Unlock Your Cosmic Potential</h2>
           <p className="text-lg mb-6 opacity-90">
             Get personalized astrological insights and discover what the stars have planned for your future.

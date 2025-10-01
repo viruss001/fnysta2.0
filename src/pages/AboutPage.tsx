@@ -1,5 +1,6 @@
 import React from 'react';
 import { Target, Users, Award, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   const values = [
@@ -53,69 +54,73 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 py-12 relative">
+      {/* Background Shapes */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-pulse -z-10" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl animate-pulse delay-500 -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="text-center mb-16">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             About Fynsta
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We're on a mission to create a comprehensive platform that brings together entertainment, 
-            information, financial tools, and cosmic insights all in one place. Our goal is to enrich 
-            lives through technology, knowledge, and community.
+            information, financial tools, and cosmic insights all in one place.
           </p>
-        </div>
+        </motion.div>
 
         {/* Story Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div>
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Founded in 2023, Fynsta began as a simple idea: what if there was one platform 
+                Founded in 2025, Fynsta began as a simple idea: what if there was one platform 
                 where people could access games, stay informed with news, make smart financial 
                 decisions, and explore their spiritual side through astrology?
               </p>
               <p>
                 Our founders, each experts in their respective fields, came together with a shared 
-                vision of creating something meaningful and accessible to everyone. We believe that 
-                life is multifaceted, and our platform should reflect that diversity.
+                vision of creating something meaningful and accessible to everyone.
               </p>
               <p>
                 Today, Fynsta serves thousands of users worldwide, providing them with tools and 
                 content that help them live more informed, entertained, and enriched lives.
               </p>
             </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="Team collaboration"
-              className="rounded-xl shadow-lg w-full h-96 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-          </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+            <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <img
+                src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Team collaboration"
+                className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-            <p className="text-gray-600 leading-relaxed">
-              To democratize access to entertainment, information, financial planning tools, 
-              and spiritual insights by creating an intuitive, comprehensive platform that 
-              serves as a one-stop destination for life's diverse needs.
-            </p>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-            <p className="text-gray-600 leading-relaxed">
-              To become the world's most trusted and comprehensive lifestyle platform, 
-              empowering individuals to make informed decisions, find entertainment, 
-              and discover their potential through technology and community.
-            </p>
-          </div>
+          {['Mission', 'Vision'].map((title, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our {title}</h3>
+              <p className="text-gray-600 leading-relaxed">
+                {title === 'Mission'
+                  ? 'To democratize access to entertainment, information, financial planning tools, and spiritual insights through an intuitive, comprehensive platform.'
+                  : 'To become the world\'s most trusted lifestyle platform, empowering individuals to make informed decisions, find entertainment, and discover potential.'}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
         {/* Values */}
@@ -123,13 +128,18 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center">
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 12 }}
+                className="bg-white rounded-xl shadow-lg p-6 text-center"
+              >
                 <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600 text-sm">{value.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -139,7 +149,11 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.03 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden group"
+              >
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={member.image}
@@ -152,50 +166,43 @@ export default function AboutPage() {
                   <p className="text-blue-600 font-medium mb-3">{member.role}</p>
                   <p className="text-gray-600 text-sm">{member.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Stats Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center mb-16"
+        >
           <h2 className="text-3xl font-bold mb-8">Fynsta by the Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-4xl font-bold mb-2">50K+</div>
-              <div className="text-blue-200">Active Users</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">1M+</div>
-              <div className="text-blue-200">Games Played</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">100K+</div>
-              <div className="text-blue-200">Calculations Made</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold mb-2">25K+</div>
-              <div className="text-blue-200">Horoscopes Read</div>
-            </div>
+            <div><div className="text-4xl font-bold mb-2">50K+</div><div className="text-blue-200">Active Users</div></div>
+            <div><div className="text-4xl font-bold mb-2">1M+</div><div className="text-blue-200">Games Played</div></div>
+            <div><div className="text-4xl font-bold mb-2">100K+</div><div className="text-blue-200">Calculations Made</div></div>
+            <div><div className="text-4xl font-bold mb-2">25K+</div><div className="text-blue-200">Horoscopes Read</div></div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Join Us Section */}
-        <div className="text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Journey</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Whether you're here to play games, stay informed, plan your finances, or explore 
             the cosmos, we're excited to be part of your journey.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg">
               Get Started Today
             </button>
             <button className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
               Learn More
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
